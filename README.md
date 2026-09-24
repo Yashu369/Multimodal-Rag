@@ -17,37 +17,26 @@ This project extends the RAG pipeline to support multimodal information by combi
 The system retrieves relevant information from the available knowledge base and provides it as context to the language model before generating the final response.
 
 🏗️ Architecture
-                 ┌─────────────────────┐
-                 │      User Query     │
-                 └──────────┬──────────┘
-                            │
-                            ▼
-                 ┌─────────────────────┐
-                 │ Query Processing    │
-                 └──────────┬──────────┘
-                            │
-                            ▼
-              ┌──────────────────────────┐
-              │   Multimodal Retrieval   │
-              │                          │
-              │  Text      Images        │
-              │   │          │           │
-              │   └────┬─────┘           │
-              └─────────┼────────────────┘
-                        │
-                        ▼
-              ┌──────────────────────────┐
-              │ Relevant Context         │
-              │ Retrieval & Ranking      │
-              └────────────┬─────────────┘
-                           │
-                           ▼
-              ┌──────────────────────────┐
-              │          LLM             │
-              │ Context + User Query     │
-              └────────────┬─────────────┘
-                           │
-                           ▼
-                 ┌─────────────────────┐
-                 │   Generated Answer  │
-                 └─────────────────────┘
+
+User Query
+    ↓
+Query Processing
+    ↓
+Multimodal Data
+(Text + Images + Documents + Tables)
+    ↓
+Preprocessing
+    ↓
+Multimodal Embeddings
+    ↓
+Vector Database
+    ↓
+Semantic Retrieval
+    ↓
+Relevant Context
+    ↓
+Context Augmentation
+    ↓
+Multimodal LLM
+    ↓
+Generated Response
